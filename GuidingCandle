@@ -1,0 +1,30 @@
+local tool = game:GetObjects(120183771785603)[1]
+local Candle = tool.Candle
+
+tool.Equipped:Connect(function()
+	EquipLight()
+end)
+
+tool.Unequipped:Connect(function()
+	UnEquipLight()
+end)
+
+local function EquipLight()
+	Candle.MainLight.Enabled = false
+	Candle.SmallLight.Enabled = false
+	Candle.GuidingLightStuff.Enabled = false
+	tool.FireParticle.Enabled = false
+	task.wait(0.1)
+	Candle.MainLight.Enabled = true
+	Candle.SmallLight.Enabled = true
+	Candle.GuidingLightStuff.Enabled = true
+	tool.FireParticle.Enabled = true
+	tool.sound_open:Play()
+end
+
+local function UnEquipLight()
+	Candle.MainLight.Enabled = false
+	Candle.SmallLight.Enabled = false
+	Candle.GuidingLightStuff.Enabled = false
+	tool.FireParticle.Enabled = false
+end
